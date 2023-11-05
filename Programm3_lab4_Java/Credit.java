@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class Credit
 {
-	int number;
+	static int number = 0;
 	Lender lenderCredit;
 	Borrower borrowerCredit;
 	int amount;
@@ -9,9 +9,13 @@ public class Credit
 	int period;
 	String currency;
 
+    static void PrintCountCredits()
+    {
+        System.out.println("В базе существеует " + number + " кредита (ов)");
+    }
+
     public Credit InputData()
     {
-        int numberValue = 0;
         String title = "";
         String nameValue = "";
         String typeLender = "";
@@ -27,7 +31,7 @@ public class Credit
         int periodValue = 0;
         String cur = "";
         Scanner in = new Scanner(System.in);
-        numberValue = ProtectInputUnsigned("Введите номер кредитного договора:");
+        number++;
         do {
             System.out.print("Введите вид кредитора (bank or MFO): ");
             typeLender = in.nextLine();
@@ -58,14 +62,14 @@ public class Credit
             System.out.println("Введите валюту:");
         } while ((cur = ProtectInputString()) == null);
 
-        Credit credit = new Credit(numberValue, typeLender, title, nameValue, ageValue, profitValue, repay, debtValue, criminalValue,
+        Credit credit = new Credit(typeLender, title, nameValue, ageValue, profitValue, repay, debtValue, criminalValue,
             nameGuarant, profitGuarant, amountValue, rateValue, periodValue, cur);
         return credit;
     }
 
     public void OutData()
     {
-        System.out.println("\nИнформация по кредиту №" + this.number);
+        System.out.println("\nИнформация по кредиту №" + number);
         System.out.println("Название кредитной организации:    " + this.lenderCredit.GetTitle());
         System.out.println("Вид кредитора (банк или МФО):      " + this.lenderCredit.GetTypeLender());
         System.out.println("ФИО заёмщика:                      " + this.borrowerCredit.GetName());
@@ -85,7 +89,7 @@ public class Credit
     public void PercentCalculate()
     {
         float rezult = this.amount * this.rate * this.period / 100;
-        System.out.printf("По кредиту №%d за %d лет сверх суммы потребуется выплатить %g (%s)\n", this.number, this.period, rezult, this.currency);
+        System.out.printf("По кредиту №%d за %d лет сверх суммы потребуется выплатить %g (%s)\n", number, this.period, rezult, this.currency);
     }
 
     public float CalculateMonthPayment()
@@ -180,21 +184,20 @@ public class Credit
 	{
         this.lenderCredit = new Lender();
         this.borrowerCredit = new Borrower();
-		this.number = 0;
+		number++;
 		this.amount = 0;
 		this.rate = 0;
 		this.period = 0;
 		this.currency = "рубль";
 	};
 
-	public Credit(int numberValue)
+	public Credit(int periodValue)
 	{
         this();
-		this.number = numberValue;
+		this.period = periodValue;
 	}
 
 	public Credit(
-		int numberValue,
 		String type,
 		String titleValue,
 		String nameValue,
@@ -213,7 +216,7 @@ public class Credit
 		lenderCredit = new Lender(type, titleValue);
 		borrowerCredit = new Borrower(nameValue, ageValue, profitValue, repay, debtValue, criminalValue,
 			nameGuarant, profitGuarant);
-		number = numberValue;
+		number++;
 		amount = amountValue;
 		rate = rateValue;
 		period = periodValue;
