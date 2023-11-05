@@ -28,6 +28,9 @@ int main()
     cout << "\n" << ++test << ") Тест конструктора со всеми параметрами" << endl;
     creditTest.OutData();
 
+    cout << "\n" << ++test << ") Тест метода для подсчета хранящихся в базе кредитов" << endl;
+    creditTest.PrintCountCredits();
+
     cout << "\n" << ++test << ") Тест метода для проверки одобрения кредита" << endl;
     creditTest.Approve();
 

@@ -246,23 +246,9 @@ void Credit::Approve()
 	}
 }
 
-//функция поиска индекса элемента в массиве по полю <номер кредита>
-void Credit::SearchNum(int* index, Credit* data, int sizeData)
+// Метод, выводящий количество хранящихся в базе кредитов
+void Credit::PrintCountCredits()
 {
-	int num = 0;
-	bool flag = true;
-	puts("Введите номер кредита:");
-	scanf("%d", &num);
-	for (int j = 0; j < sizeData; j++)
-		if (data[j].GetNumber() == num)
-		{
-			flag = false;
-			*index = j;
-		}
-	if (flag)
-	{
-		puts("По введенному номеру не найдено данных.");
-		*index = -1;
-	}
+	cout << "В базе существеует " << number << " кредита (ов)" << endl;
 }
 

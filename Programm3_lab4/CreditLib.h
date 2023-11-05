@@ -152,12 +152,12 @@ public:
 		string nameGuarant,
 		int profitGuarant)
 	{
-		historyBorrower = History(repay, debtValue);
-		guarantorBorrower = Guarantor(nameGuarant, profitGuarant);
-		name = nameValue;
-		age = ageValue;
-		profit = profitValue;
-		criminal = criminalValue;
+		this->historyBorrower = History(repay, debtValue);
+		this->guarantorBorrower = Guarantor(nameGuarant, profitGuarant);
+		this->name = nameValue;
+		this->age = ageValue;
+		this->profit = profitValue;
+		this->criminal = criminalValue;
 	}
 
 	string GetName() {
@@ -227,7 +227,7 @@ public:
 	float CalculateMonthPayment();
 	void EarlyRepaymentPercentCalculate();
 	void Approve();
-	void SearchNum(int* index, Credit* data, int sizeData);
+	static void PrintCountCredits();
 
 	Credit()
 	{
@@ -262,13 +262,13 @@ public:
 		string cur)
 	{
 		++number;
-		lenderCredit = Lender(type, titleValue);
-		borrowerCredit = Borrower(nameValue, ageValue, profitValue, repay, debtValue, criminalValue, \
+		this->lenderCredit = Lender(type, titleValue);
+		this->borrowerCredit = Borrower(nameValue, ageValue, profitValue, repay, debtValue, criminalValue, \
 			nameGuarant, profitGuarant);
-		amount = amountValue;
-		rate = rateValue;
-		period = periodValue;
-		currency = cur;
+		this->amount = amountValue;
+		this->rate = rateValue;
+		this->period = periodValue;
+		this->currency = cur;
 	}
 
 	int GetNumber() {
