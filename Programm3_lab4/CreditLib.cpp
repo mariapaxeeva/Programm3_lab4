@@ -121,7 +121,6 @@ int Borrower::CheckProbabilityApproval()
 
 Credit Credit::InputData()
 {
-	int numberValue = 0;
 	string typeLender = "";
 	string title = "";
 	string nameValue = "";
@@ -136,8 +135,6 @@ Credit Credit::InputData()
 	float rateValue = 0;
 	int periodValue = 0;
 	string cur = "";
-	ProtectInputUnsigned(&numberValue, "Введите номер кредитного договора:");
-	while (getchar() != '\n');
 	do {
 		printf("Введите вид кредитора (банк или МФО):\n");
 		cin >> typeLender;
@@ -172,7 +169,7 @@ Credit Credit::InputData()
 		cout << "Введите валюту:" << endl;
 	} while (ProtectInputString(&cur));
 
-	Credit credit = Credit(numberValue, typeLender, title, nameValue, ageValue, profitValue, repay, debtValue, criminalValue, \
+	Credit credit = Credit(typeLender, title, nameValue, ageValue, profitValue, repay, debtValue, criminalValue, \
 		nameGuarant, profitGuarant, amountValue, rateValue, periodValue, cur);
 	return credit;
 }
@@ -250,7 +247,7 @@ void Credit::Approve()
 }
 
 //функция поиска индекса элемента в массиве по полю <номер кредита>
-void SearchNum(int* index, Credit* data, int sizeData)
+void Credit::SearchNum(int* index, Credit* data, int sizeData)
 {
 	int num = 0;
 	bool flag = true;
@@ -268,3 +265,4 @@ void SearchNum(int* index, Credit* data, int sizeData)
 		*index = -1;
 	}
 }
+

@@ -21,10 +21,10 @@ int main()
     int test = 0;
 
     Credit credit0;
-    cout << "\n" << ++test << ") Тест конструктора без параметров" << endl;
+    cout << "\n" << ++test << ") Тест конструктора без параметров (+ демонстрация использования статического поля number - счетчика еомера кредита)" << endl;
     credit0.OutData();
 
-    Credit creditTest(123, "банк", "Сбербанк", "Иванов И. И.", 30, 20000, 0, 1000, '-', "Петров П. П.", 45000, 100000, 4.8, 10, "рубль");
+    Credit creditTest("банк", "Сбербанк", "Иванов И. И.", 30, 20000, 0, 1000, '-', "Петров П. П.", 45000, 100000, 4.8, 10, "рубль");
     cout << "\n" << ++test << ") Тест конструктора со всеми параметрами" << endl;
     creditTest.OutData();
 
@@ -51,14 +51,14 @@ int main()
     cout << "\n" << ++test << ") Динамический массив объектов класса " << endl;
     Credit* data = new Credit[3]{ int(123), int(111), int(1000) };
     for (int i = 0; i < 3; i++)
-        cout << data[i].GetNumber() << endl;
+        cout << data[i].GetPeriod() << endl;
 
     delete[] data;
 
     cout << "\n" << ++test << ") Массив динамических объектов класса " << endl;
     Credit* dinamicData[3]{ new Credit(207), new Credit(1890), new Credit(43) };
     for (int i = 0; i < 3; i++)
-        cout << dinamicData[i]->GetNumber() << endl;
+        cout << dinamicData[i]->GetPeriod() << endl;
 
     for (int i = 0; i < 3; i++)
         delete dinamicData[i];

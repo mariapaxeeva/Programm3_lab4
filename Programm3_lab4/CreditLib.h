@@ -212,7 +212,7 @@ public:
 class Credit
 {
 private:
-	int number;
+	static inline unsigned int number;
 	Lender lenderCredit;
 	Borrower borrowerCredit;
 	int amount;
@@ -231,20 +231,21 @@ public:
 
 	Credit()
 	{
-		this->number = 0;
+		++number;
+		Lender();
+		Borrower();
 		this->amount = 0;
 		this->rate = 0;
 		this->period = 0;
 		this->currency = "рубль";
 	};
 
-	Credit(int numberValue) :Credit()
+	Credit(int periodValue) :Credit()
 	{
-		this->number = numberValue;
+		this->period = periodValue;
 	}
 
 	Credit(
-		int numberValue,
 		string type,
 		string titleValue,
 		string nameValue,
@@ -260,10 +261,10 @@ public:
 		int periodValue,
 		string cur)
 	{
+		++number;
 		lenderCredit = Lender(type, titleValue);
 		borrowerCredit = Borrower(nameValue, ageValue, profitValue, repay, debtValue, criminalValue, \
 			nameGuarant, profitGuarant);
-		number = numberValue;
 		amount = amountValue;
 		rate = rateValue;
 		period = periodValue;
@@ -284,9 +285,6 @@ public:
 	}
 	string GetCurrency() {
 		return currency;
-	}
-	void SetNumber(int num) {
-		number = num;
 	}
 	void SetAmount(int amountNew) {
 		amount = amountNew;
