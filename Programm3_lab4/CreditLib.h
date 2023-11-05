@@ -225,6 +225,8 @@ public:
 	void OutData();
 	void PercentCalculate();
 	float CalculateMonthPayment();
+	void CalculateMonthPaymentReturnPtr(float* monthPayment);
+	void CalculateMonthPaymentReturnLnk(float& monthPayment);
 	void EarlyRepaymentPercentCalculate();
 	void Approve();
 	static void PrintCountCredits();

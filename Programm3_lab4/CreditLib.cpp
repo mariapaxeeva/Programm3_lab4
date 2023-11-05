@@ -206,6 +206,16 @@ float Credit::CalculateMonthPayment()
 	return monthPayment;
 }
 
+void Credit::CalculateMonthPaymentReturnPtr(float* monthPayment)
+{
+	*monthPayment = (1 + this->rate / 100) * this->amount / 12;
+}
+
+void Credit::CalculateMonthPaymentReturnLnk(float& monthPayment)
+{
+	monthPayment = (1 + this->rate / 100) * this->amount / 12;
+}
+
 void Credit::EarlyRepaymentPercentCalculate()
 {
 	int factPeriod = 0;
@@ -251,4 +261,19 @@ void Credit::PrintCountCredits()
 {
 	cout << "В базе существеует " << number << " кредита (ов)" << endl;
 }
+
+//// Метод поиска записи по номеру кредита (возвращает указатель на запись через параметр)
+//void Credit::SearchNum(Credit* ptr, Credit* data)
+//{
+//	int num = 0;
+//	ProtectInputUnsigned(&num, "Введите номер кредита:");
+//	if (num > Credit::number)
+//		cout << "Такого номера не существует" << endl;
+//	else
+//		for (int i = 0; i < Credit::number; i++)
+//		{
+//			if (data[i].GetNumber() == num)
+//				*ptr = data[i];
+//		}
+//}
 

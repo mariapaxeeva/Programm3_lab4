@@ -40,6 +40,15 @@ int main()
     cout << "\n" << ++test << ") Тест метода для расчета месячной выплаты" << endl;
     cout << "Выплата составляет " << creditTest.CalculateMonthPayment() << endl;
 
+    cout << "\n" << ++test << ") Тест метода для расчета месячной выплаты (возврат значения через указатель)" << endl;
+    float monthPayment = 0;
+    creditTest.CalculateMonthPaymentReturnPtr(&monthPayment);
+    cout << "Выплата составляет " << monthPayment << endl;
+
+    cout << "\n" << ++test << ") Тест метода для расчета месячной выплаты (возврат значения через ссылку)" << endl;
+    creditTest.CalculateMonthPaymentReturnLnk(monthPayment);
+    cout << "Выплата составляет " << monthPayment << " (link = " << &monthPayment << ")" << endl;
+
     cout << "\n" << ++test << ") Тест метода для расчета суммы, которую требуется выплатить по процентной ставке при досрочном погашении" << endl;
     creditTest.EarlyRepaymentPercentCalculate();
 
@@ -62,6 +71,7 @@ int main()
     Credit* dinamicData[3]{ new Credit(207), new Credit(1890), new Credit(43) };
     for (int i = 0; i < 3; i++)
         cout << dinamicData[i]->GetPeriod() << endl;
+    
 
     for (int i = 0; i < 3; i++)
         delete dinamicData[i];
