@@ -4,8 +4,10 @@
 
 using namespace std;
 
+class Borrower;
 class Lender
 {
+friend void CheckProbabilityApprovalNew(Borrower& borrower, Lender& lender);
 private:
 	string typeLender;
 	string title;
@@ -124,6 +126,7 @@ public:
 
 class Borrower
 {
+friend void CheckProbabilityApprovalNew(Borrower& borrower, Lender& lender);
 private:
 	string name;
 	int age;
@@ -140,7 +143,14 @@ public:
 		this->name = "none";
 		this->age = 0;
 		this->profit = 0;
+		History();
 		this->criminal = '-';
+		Guarantor();
+	}
+	Borrower(string name)
+	{
+		Borrower();
+		this->name = name;
 	}
 	Borrower(
 		string nameValue,

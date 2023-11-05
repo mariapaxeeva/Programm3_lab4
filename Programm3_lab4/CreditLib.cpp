@@ -90,6 +90,31 @@ void Borrower::OutBorrower()
 	cout << "Доход поручителя:                  " << this->guarantorBorrower.GetProfitGuarantor() << endl;
 }
 
+void CheckProbabilityApprovalNew(Borrower& borrower, Lender& lender)
+{
+	cout << "Заёмщик " << borrower.name << " планирует взять кредит в организации: " << lender.title << " (" << lender.typeLender << ")" << endl;
+	bool conditionAge = true;
+	bool conditionProfit = true;
+	bool conditionHistory = true;
+	bool conditionCriminal = true;
+	if (borrower.age < 18)
+		conditionAge = false;
+	if (borrower.profit < 14375)
+		conditionProfit = false;
+	if (borrower.historyBorrower.GetRepayLoan() < 2 && borrower.historyBorrower.GetDebt() > borrower.profit * 3)
+		conditionHistory = false;
+	if (borrower.criminal == '+')
+		conditionCriminal = false;
+	if (conditionAge && conditionProfit && conditionHistory && conditionCriminal)
+	{
+		cout << "Вероятность одобрения кредита высока!" << endl;
+	}
+	else
+	{
+		cout << "К сожалению, кредит вряд ли будет одобрен." << endl;
+	}
+}
+
 //функция оценивает вероятность одобрения кредита некоторому заёмщику
 int Borrower::CheckProbabilityApproval()
 {
@@ -276,4 +301,3 @@ void Credit::PrintCountCredits()
 //				*ptr = data[i];
 //		}
 //}
-

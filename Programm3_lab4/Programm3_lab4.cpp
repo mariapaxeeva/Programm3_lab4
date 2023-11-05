@@ -21,7 +21,7 @@ int main()
     int test = 0;
 
     Credit credit0;
-    cout << "\n" << ++test << ") Тест конструктора без параметров (+ демонстрация использования статического поля number - счетчика еомера кредита)" << endl;
+    cout << "\n" << ++test << ") Тест конструктора без параметров (+ демонстрация использования статического поля number - счетчика номера кредита)" << endl;
     credit0.OutData();
 
     Credit creditTest("банк", "Сбербанк", "Иванов И. И.", 30, 20000, 0, 1000, '-', "Петров П. П.", 45000, 100000, 4.8, 10, "рубль");
@@ -55,6 +55,11 @@ int main()
     Borrower borrowerTest;
     cout << "\n" << ++test << ") Тест метода для оценки вероятности одобрения кредита" << endl;
     borrowerTest.CheckProbabilityApproval();
+
+    cout << "\n" << ++test << ") Тест дружественной функции для оценки вероятности одобрения кредита" << endl;
+    Lender lenderTest("bank", "Tinkoff");
+    Borrower borrowerTestNew("Petrov P. P.");
+    CheckProbabilityApprovalNew(borrowerTestNew, lenderTest);
 
     cout << "\n" << ++test << ") Тест метода для ввода с консоли и вывода в консоль вероятности одобрения кредита" << endl;
     creditTest = creditTest.InputData();
