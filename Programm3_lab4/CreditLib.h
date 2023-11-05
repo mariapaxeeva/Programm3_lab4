@@ -86,6 +86,24 @@ public:
 	void SetDebt(int debtNew) {
 		debt = debtNew;
 	}
+
+	History operator+(const History& other)
+	{
+		History temp;
+		temp.repayLoan = this->repayLoan + other.repayLoan;
+		temp.debt = this->debt + other.debt;
+		return temp;
+	}
+
+	History operator++(int)
+	{
+		return History(this->repayLoan++, this->debt = 0);
+	}
+
+	History operator++()
+	{
+		return History(++this->repayLoan, this->debt = 0);
+	}
 };
 
 class Guarantor

@@ -31,6 +31,22 @@ int main()
     cout << "\n" << ++test << ") Тест метода для подсчета хранящихся в базе кредитов" << endl;
     creditTest.PrintCountCredits();
 
+    History historyFirst(3, 10000), historySecond(2, 5000);
+    cout << "\n" << ++test << ") Тест, демонстрирующий работу перегруженного оператора +:" << endl;
+    History newHistory = historyFirst + historySecond;
+    cout << historyFirst.GetRepayLoan() << " + " << historySecond.GetRepayLoan() << " = " << newHistory.GetRepayLoan() << endl;
+    cout << historyFirst.GetDebt() << " + " << historySecond.GetDebt() << " = " << newHistory.GetDebt() << endl;
+
+    cout << "\n" << ++test << ") Тест, демонстрирующий работу перегруженного оператора ++ (постфиксный):" << endl;
+    newHistory++;
+    cout << "Полученное количество погашенных долгов: " << newHistory.GetRepayLoan() << endl;
+    cout << "Полученная задолженность: " << newHistory.GetDebt() << endl;
+
+    cout << "\n" << ++test << ") Тест, демонстрирующий работу перегруженного оператора ++ (префиксный):" << endl;
+    ++newHistory;
+    cout << "Полученное количество погашенных долгов: " << newHistory.GetRepayLoan() << endl;
+    cout << "Полученная задолженность: " << newHistory.GetDebt() << endl;
+
     cout << "\n" << ++test << ") Тест метода для проверки одобрения кредита" << endl;
     creditTest.Approve();
 
