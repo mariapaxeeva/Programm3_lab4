@@ -149,7 +149,7 @@ public class Credit
     public int ProtectInputUnsigned(String message)
     {
         Scanner in = new Scanner(System.in);
-        int num;
+        Integer num;
         while (true) {  
             System.out.println(message);  
             try {  
@@ -160,7 +160,7 @@ public class Credit
                 System.out.println("Неверный формат ввода! Попробуйте ещё раз.");  
             }  
         }
-        return num;
+        return num.intValue();
     }
 
     public float ProtectInputRate(String message)
